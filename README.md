@@ -4,7 +4,7 @@
 
 Achtes Stück der **Spannbaum-Reihe** der "Konzepte"-Reihe für die Website "Sebastian Hanisch – Operations Research und Machine Learning". Bisher verliefen die Kanten nur **zwischen den Kunden**. In einem Leitungsnetz darf man aber an **Kreuzungen verzweigen, die selbst kein Kunde sind** - **Steinerpunkte** -, und das kann den Baum kürzer machen. Gegeben ist ein Stadtplan (Kreuzungen, Straßen mit Länge, ein Teil der Straßen gesperrt) und eine Menge von **Terminals** (Depot und Kunden); gesucht ist der kürzeste Baum im Plan, der alle Terminals verbindet - mit beliebigen Zwischenknoten. Das **Steiner-Baum-Problem in Graphen** ist **NP-schwer**; der Spannbaum über die Terminals (mit den Abständen im Plan) ist der Sonderfall ohne Steinerpunkte und dient als **Basislinie**. Die Demo misst, **was Steinerpunkte sparen**, wie gut **Kou-Markowsky-Berman** (KMB), **Takahashi-Matsuyama** (TM) und eine **Lokalsuche über Steinerpunkte** gegen das **exakte Optimum** (**Dreyfus-Wagner**, nur für wenige Terminals) abschneiden und was Sperrungen und Gruppierung ändern. Der Kernsatz macht das Optimum überprüfbar: jeder Steinerbaum ist ein Baum auf Terminals plus einer Menge X von Steinerpunkten, also ist **OPT = min über X von MST(G[T ∪ X])** (MST des induzierten Teilgraphen).
 
-**Einordnung in die Reihe:** geplant sind elf Stücke, dies ist das achte:
+**Einordnung in die Reihe:** geplant waren elf Stücke, alle sind gebaut, dies ist das achte:
 
 ```
 Kruskal (Wurzel)                                                                           [gebaut: kruskal-demo]
@@ -15,9 +15,9 @@ Kruskal (Wurzel)                                                                
  ├─ Bottleneck-/Grad-/Hop-beschränkter Spannbaum                                           [gebaut: constrained-mst-demo]
  │    └─ Kapazitierter MST                                                                 [gebaut: cmst-demo]
  ├─ Steiner-Baum                                                                           [DIESES STÜCK]
- │    └─ Prize-Collecting Steiner-Baum                                                     [nicht gebaut]
- ├─ MST-Sensitivität & dynamischer MST                                                     [nicht gebaut]
- └─ Zufällige Spannbäume & Kirchhoff                                                       [nicht gebaut]
+ │    └─ Prize-Collecting Steiner-Baum                                                     [gebaut: pcst-demo]
+ ├─ MST-Sensitivität & dynamischer MST                                                     [gebaut: mst-sensitivity-demo]
+ └─ Zufällige Spannbäume & Kirchhoff                                                       [gebaut: random-spanning-tree-demo]
 ```
 
 Ergebnis in Kürze: **Steinerpunkte sparen auf dem Stadtplan im Mittel 8,6 % gegenüber dem Spannbaum über die Terminals (Plan 8 x 8, 7 Terminals; in 92 % der Instanzen etwas, im Einzelfall bis 20,5 %), in Gruppen nur 2,1 % (in 50 % der Fälle). KMB ist das schwächste Verfahren: er trifft den besten Baum bei 7 Terminals nur in 26 % der Instanzen (mittlere Lücke 5,1 %, größte gut 20 %). Takahashi-Matsuyama hängt stark von der Wurzel ab: mit dem Depot als Start 30 % optimal (mittlere Lücke 3,2 %), mit der besten Wurzel 56 % (1,2 %). Die Lokalsuche verbessert den Start nur in 6 % der Instanzen und ist in 62 % optimal.** Die Garantie 2 (1 − 1/t) x Optimum wurde nie verletzt; die Lücken liegen weit darunter.
@@ -83,7 +83,7 @@ Das **Lehrbuchbeispiel** ist von Hand nachzurechnen: Terminals W, E, S, N um die
 - **Steinerpunkte sind hier nur Kreuzungen (Graph-Steiner):** das euklidische Steiner-Problem mit frei wählbaren Punkten in der Ebene ist ein anderes (bekannte Konstante 2/√3 ≈ 1,155 - hier weder gebaut noch nachgemessen); die Schranke 3/2 (Hwang 1976) gilt für das rechtwinklige Gitter und wird nur auf dem ungestörten Gitter geprüft (höchstens 1,40 in 300 Instanzen).
 - **Exakt ist klein:** Dreyfus-Wagner wächst mit 3^t und wird bis t = 13 angeboten; der Stand der Technik (Reduktionen, Branch-and-Cut, SCIP-Jack, PACE 2018) löst Instanzen mit tausenden Terminals - nicht gebaut. Auch die LP-Verfahren von Byrka, Grandoni, Rothvoß und Sanità (2013, Näherungsgüte ln 4 + ε ≈ 1,39) sind nur genannt. Aufschläge bei t > 13 sind Abstände zwischen Heuristiken, keine Lücken zum Optimum.
 - **Synthetisches Modell:** gestörtes Gitter, Länge als einzige Kosten, keine Kapazität, keine Kosten für Steinerpunkte; 5 feste Instanzen je Wert für die Sweeps, 50 für die Verteilungen.
-- **Nicht gebaut:** Prize-Collecting Steiner-Baum, Sensitivität, zufällige Spannbäume.
+- **Nachfolger (inzwischen gebaut):** Prize-Collecting Steiner-Baum (`pcst-demo`), Sensitivität (`mst-sensitivity-demo`), zufällige Spannbäume (`random-spanning-tree-demo`).
 
 ## Verifikation
 
@@ -113,4 +113,4 @@ python -m pytest tests -v
 - Hwang, F. K. (1976). *On Steiner minimal trees with rectilinear distance.* SIAM Journal on Applied Mathematics 30(1), 104–114.
 - Byrka, J., Grandoni, F., Rothvoß, T., & Sanità, L. (2013). *Steiner tree approximation via iterative randomized rounding.* Journal of the ACM 60(1) (nur genannt, nicht gebaut).
 
-Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning.
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Spannbäume: vom Kruskal bis zum Zufallsbaum](https://sebastianhanisch.net/konzepte-spannbaum.html).

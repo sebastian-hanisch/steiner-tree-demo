@@ -77,7 +77,7 @@ und eine **Lokalsuche über Steinerpunkte** gegen das **exakte Optimum** (Dreyfu
 )
 st.caption(
     "Setzt auf [kruskal-demo](https://github.com/sebastian-hanisch/kruskal-demo) auf (der Spannbaum über die Terminals ist die Basislinie); Kartenkulisse wie in [constrained-mst-demo](https://github.com/sebastian-hanisch/constrained-mst-demo) und "
-    "[cmst-demo](https://github.com/sebastian-hanisch/cmst-demo). Geplante Nachfolger (nicht gebaut): Prize-Collecting Steiner-Baum, Sensitivität, zufällige Spannbäume."
+    "[cmst-demo](https://github.com/sebastian-hanisch/cmst-demo). Nachfolger: [pcst-demo](https://github.com/sebastian-hanisch/pcst-demo) (Prize-Collecting Steiner-Baum), [mst-sensitivity-demo](https://github.com/sebastian-hanisch/mst-sensitivity-demo) (Sensitivität), [random-spanning-tree-demo](https://github.com/sebastian-hanisch/random-spanning-tree-demo) (zufällige Spannbäume)."
 )
 
 with st.expander("So funktionieren die Verfahren", expanded=True):
@@ -300,6 +300,6 @@ Implementiert in `stn_algorithm.py` (Verfahren), `stn_scenario.py` (Pläne), `st
 st.markdown("---")
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Spannbäume: vom Kruskal bis zum Zufallsbaum](https://sebastianhanisch.net/konzepte-spannbaum.html)."
 )
