@@ -4,7 +4,7 @@
 
 Achtes Stück der **Spannbaum-Reihe** der "Konzepte"-Reihe für die Website "Sebastian Hanisch – Operations Research und Machine Learning". Bisher verliefen die Kanten nur **zwischen den Kunden**. In einem Leitungsnetz darf man aber an **Kreuzungen verzweigen, die selbst kein Kunde sind** - **Steinerpunkte** -, und das kann den Baum kürzer machen. Gegeben ist ein Stadtplan (Kreuzungen, Straßen mit Länge, ein Teil der Straßen gesperrt) und eine Menge von **Terminals** (Depot und Kunden); gesucht ist der kürzeste Baum im Plan, der alle Terminals verbindet - mit beliebigen Zwischenknoten. Das **Steiner-Baum-Problem in Graphen** ist **NP-schwer**; der Spannbaum über die Terminals (mit den Abständen im Plan) ist der Sonderfall ohne Steinerpunkte und dient als **Basislinie**. Die Demo misst, **was Steinerpunkte sparen**, wie gut **Kou-Markowsky-Berman** (KMB), **Takahashi-Matsuyama** (TM) und eine **Lokalsuche über Steinerpunkte** gegen das **exakte Optimum** (**Dreyfus-Wagner**, nur für wenige Terminals) abschneiden und was Sperrungen und Gruppierung ändern. Der Kernsatz macht das Optimum überprüfbar: jeder Steinerbaum ist ein Baum auf Terminals plus einer Menge X von Steinerpunkten, also ist **OPT = min über X von MST(G[T ∪ X])** (MST des induzierten Teilgraphen).
 
-**Einordnung in die Reihe:** geplant waren elf Stücke, alle sind gebaut, dies ist das achte:
+**Einordnung in die Reihe:** die Reihe hat elf Stücke, alle sind gebaut, dies ist das achte:
 
 ```
 Kruskal (Wurzel)                                                                           [gebaut: kruskal-demo]
