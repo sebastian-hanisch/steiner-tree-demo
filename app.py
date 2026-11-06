@@ -75,6 +75,19 @@ Hier wird gemessen, **was Steinerpunkte sparen**, wie gut zwei klassische Heuris
 und eine **Lokalsuche über Steinerpunkte** gegen das **exakte Optimum** (Dreyfus-Wagner, nur für wenige Terminals) abschneiden und was Sperrungen und Gruppierung ändern.
 """
 )
+
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/steiner-tree-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Stellen Sie sich vor, mehrere Häuser eines Dorfes sollen an dieselbe Leitung. Jeder Straßenabschnitt, in dem Leitung liegt, kostet gleich viel. Verbindet man nur Haus mit Haus, wird das Netz länger als nötig. Darf sich die Leitung auch an einer Kreuzung **verzweigen**, an der gar kein Haus steht, teilen sich mehrere Häuser ein Stück Weg. Solche Kreuzungen heißen **Steinerpunkte**, das kürzeste Netz mit ihnen **Steiner-Baum**.
+
+Die richtigen Steinerpunkte zu finden ist schwer. Die Demo legt drei Faustregeln neben die beste Lösung, die sich nur für wenige Anschlusspunkte ausrechnen lässt. Sie zeigt, wie viel das Verzweigen spart, wann es kaum etwas bringt (etwa wenn die Häuser in Gruppen liegen) und wo die Faustregeln danebenliegen. Sperrungen und Gruppierung lassen sich einstellen.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/steiner-tree-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
 st.caption(
     "Setzt auf [kruskal-demo](https://github.com/sebastian-hanisch/kruskal-demo) auf (der Spannbaum über die Terminals ist die Basislinie); Kartenkulisse wie in [constrained-mst-demo](https://github.com/sebastian-hanisch/constrained-mst-demo) und "
     "[cmst-demo](https://github.com/sebastian-hanisch/cmst-demo). Nachfolger: [pcst-demo](https://github.com/sebastian-hanisch/pcst-demo) (Prize-Collecting Steiner-Baum), [mst-sensitivity-demo](https://github.com/sebastian-hanisch/mst-sensitivity-demo) (Sensitivität), [random-spanning-tree-demo](https://github.com/sebastian-hanisch/random-spanning-tree-demo) (zufällige Spannbäume)."
@@ -277,6 +290,26 @@ st.markdown(
 st.markdown("---")
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/steiner-tree-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben ist ein Stadtplan als Graph aus Kreuzungen und Straßen mit Längen sowie eine Menge von Anschlusspunkten (Terminals). Gesucht ist der kürzeste Baum im Plan, der alle Terminals verbindet und beliebige Kreuzungen als Zwischenknoten nutzen darf.
+
+| Symbol | Bedeutung |
+|---|---|
+| $G=(V,E)$ | Plan mit Kreuzungen $V$ und Straßen $E$ |
+| $T$, $t$ | Menge der Terminals (Depot und Kunden) und ihre Zahl |
+| $X$ | Menge der Steinerpunkte, also der genutzten Kreuzungen ohne Terminal |
+| $G[T \cup X]$ | Teilplan, der nur die Kreuzungen aus $T$ und $X$ und die Straßen zwischen ihnen enthält |
+| $\mathrm{MST}(\cdot)$ | Länge des kürzesten Spannbaums des genannten Teilplans |
+| $\mathrm{OPT}$ | Länge des kürzesten Steinerbaums (das Optimum) |
+| $D[S][v]$ | kürzester Baum, der die Terminals in $S$ und die Kreuzung $v$ verbindet |
+| $d(u,v)$ | kürzester Abstand zweier Kreuzungen im Plan |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/steiner-tree-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown(
         r"""
 **Problem.** Gegeben ein zusammenhängender Graph $G = (V, E)$ mit Längen $c_e > 0$ und Terminals $T \subseteq V$. Gesucht ist ein Baum $S \subseteq E$ minimaler Länge, dessen Knotenmenge $T$ enthält. Für $|T| = |V|$ ist es der
